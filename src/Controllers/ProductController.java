@@ -73,8 +73,7 @@ public class ProductController extends AbstractController<Product>{
         return product_list;
     }
     
-    //метод выозвращающий список id-шников этого класса. Для внешних ключей, при заполнении comboBox
-    //создаю объект defaultcomboBoxModel, в конструктор буду передавать 
+    //метод возвращающий список id-шников этого класса. Для внешних ключей, при заполнении comboBox
     public Product[] getIds () throws SQLException {
         List<Product> product_list = selectAll();
         Product[] result = new Product[product_list.size()];
@@ -89,22 +88,22 @@ public class ProductController extends AbstractController<Product>{
         return statement.executeQuery("select * from product"); 
     }
     
-    public Product getStorageById(int id) throws SQLException {
-        statement = connection.createStatement(); 
-        List<Product> product_list = null;
-        product_list = new ArrayList<>();
-        
-        ResultSet rs = statement.executeQuery("select * from product"
-                + " where id_product = " + id);
-        while (rs.next()) {
-            Product product = new Product();
-            product.setId_product(rs.getInt("id_product"));
-            product.setName(rs.getString("name"));
-            product.setCost(rs.getInt("cost"));
-            product.setCount(rs.getInt("count"));
-            product.setId_storage(rs.getInt("id_storage"));
-            product_list.add(product);
-        }
-        return product_list.get(0);
-    }
+//    public Product getStorageById(int id) throws SQLException {
+//        statement = connection.createStatement(); 
+//        List<Product> product_list = null;
+//        product_list = new ArrayList<>();
+//        
+//        ResultSet rs = statement.executeQuery("select * from product"
+//                + " where id_product = " + id);
+//        while (rs.next()) {
+//            Product product = new Product();
+//            product.setId_product(rs.getInt("id_product"));
+//            product.setName(rs.getString("name"));
+//            product.setCost(rs.getInt("cost"));
+//            product.setCount(rs.getInt("count"));
+//            product.setId_storage(rs.getInt("id_storage"));
+//            product_list.add(product);
+//        }
+//        return product_list.get(0);
+//    }
 }

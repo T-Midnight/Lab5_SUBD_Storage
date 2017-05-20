@@ -1,8 +1,10 @@
 package Frames;
 
+import Controllers.CustomerController;
 import Controllers.ProductController;
 import Controllers.StorageController;
 import DB.DBManager;
+import Entity.Customer;
 import Entity.Product;
 import Entity.Storage;
 import java.sql.Connection;
@@ -54,7 +56,32 @@ public class MainFrame extends javax.swing.JFrame {
         tfAddCountProduct = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         cbAddProductIdStorage = new javax.swing.JComboBox<>();
-        jDialog1 = new javax.swing.JDialog();
+        jDialogAddCustomer = new javax.swing.JDialog();
+        btnAddCustomer = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        tfNameCustomer = new javax.swing.JTextField();
+        tfSurnamecustomer = new javax.swing.JTextField();
+        tfAdressCustomer = new javax.swing.JTextField();
+        jDialogEditProduct = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        tfEditCountProduct1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        cbEditProductIdStorage1 = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        btnEditProduct1 = new javax.swing.JButton();
+        tfEditNameProduct1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        tfEditCostProduct1 = new javax.swing.JTextField();
+        jDialogEditCustomer = new javax.swing.JDialog();
+        tfEditNameCustomer1 = new javax.swing.JTextField();
+        tfEditSurnamecustomer1 = new javax.swing.JTextField();
+        tfEditAdressCustomer1 = new javax.swing.JTextField();
+        btnEditCustomer1 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Label = new javax.swing.JLabel();
@@ -69,7 +96,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         menuItemStorage = new javax.swing.JMenuItem();
         menuItemProduct = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        menuItemCustomer = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -148,7 +175,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setText("Name");
 
         btnAddProduct.setText("Add");
         btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -157,13 +184,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setText("Cost");
 
-        jLabel6.setText("jLabel6");
+        jLabel6.setText("Count");
 
         tfAddCountProduct.setToolTipText("");
 
-        jLabel8.setText("jLabel8");
+        jLabel8.setText("Id_storage");
 
         cbAddProductIdStorage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -172,27 +199,24 @@ public class MainFrame extends javax.swing.JFrame {
         jDialogAddProductLayout.setHorizontalGroup(
             jDialogAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogAddProductLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
                 .addGroup(jDialogAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialogAddProductLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
                         .addGroup(jDialogAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(49, 49, 49)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addGap(25, 25, 25)
                         .addGroup(jDialogAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfAddNameProduct)
                             .addComponent(tfAddCostProduct)
-                            .addComponent(tfAddCountProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)))
+                            .addComponent(tfAddCountProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(cbAddProductIdStorage, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jDialogAddProductLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(49, 49, 49)
-                        .addComponent(cbAddProductIdStorage, 0, 121, Short.MAX_VALUE)))
-                .addContainerGap(108, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogAddProductLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(99, 99, 99))
+                        .addGap(125, 125, 125)
+                        .addComponent(btnAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         jDialogAddProductLayout.setVerticalGroup(
             jDialogAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,20 +237,197 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jDialogAddProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(cbAddProductIdStorage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(btnAddProduct)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jDialogAddCustomer.setBounds(new java.awt.Rectangle(0, 0, 400, 300));
+
+        btnAddCustomer.setText("Add");
+        btnAddCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCustomerActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Name");
+
+        jLabel9.setText("Surname");
+
+        jLabel10.setText("Adress");
+
+        javax.swing.GroupLayout jDialogAddCustomerLayout = new javax.swing.GroupLayout(jDialogAddCustomer.getContentPane());
+        jDialogAddCustomer.getContentPane().setLayout(jDialogAddCustomerLayout);
+        jDialogAddCustomerLayout.setHorizontalGroup(
+            jDialogAddCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAddCustomerLayout.createSequentialGroup()
+                .addGroup(jDialogAddCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogAddCustomerLayout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(btnAddCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialogAddCustomerLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(jDialogAddCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addGap(36, 36, 36)
+                        .addGroup(jDialogAddCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfAdressCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfSurnamecustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfNameCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jDialogAddCustomerLayout.setVerticalGroup(
+            jDialogAddCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogAddCustomerLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jDialogAddCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tfNameCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jDialogAddCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(tfSurnamecustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jDialogAddCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(tfAdressCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(btnAddCustomer)
+                .addGap(39, 39, 39))
+        );
+
+        jDialogEditProduct.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                jDialogEditProductWindowOpened(evt);
+            }
+        });
+
+        jLabel11.setText("Count");
+
+        tfEditCountProduct1.setToolTipText("");
+
+        jLabel12.setText("Id_storage");
+
+        cbEditProductIdStorage1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel13.setText("Name");
+
+        btnEditProduct1.setText("Edit");
+        btnEditProduct1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditProduct1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Cost");
+
+        javax.swing.GroupLayout jDialogEditProductLayout = new javax.swing.GroupLayout(jDialogEditProduct.getContentPane());
+        jDialogEditProduct.getContentPane().setLayout(jDialogEditProductLayout);
+        jDialogEditProductLayout.setHorizontalGroup(
+            jDialogEditProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEditProductLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addGroup(jDialogEditProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogEditProductLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btnEditProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(162, 162, 162))
+                    .addGroup(jDialogEditProductLayout.createSequentialGroup()
+                        .addGroup(jDialogEditProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12))
+                        .addGap(25, 25, 25)
+                        .addGroup(jDialogEditProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfEditNameProduct1)
+                            .addComponent(tfEditCostProduct1)
+                            .addComponent(tfEditCountProduct1, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(cbEditProductIdStorage1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jDialogEditProductLayout.setVerticalGroup(
+            jDialogEditProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEditProductLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jDialogEditProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(tfEditNameProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogEditProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(tfEditCostProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogEditProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(tfEditCountProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogEditProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(cbEditProductIdStorage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(btnEditProduct1)
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+
+        jDialogEditCustomer.setBounds(new java.awt.Rectangle(0, 0, 400, 300));
+
+        btnEditCustomer1.setText("Edit");
+        btnEditCustomer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditCustomer1ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Name");
+
+        jLabel16.setText("Surname");
+
+        jLabel17.setText("Adress");
+
+        javax.swing.GroupLayout jDialogEditCustomerLayout = new javax.swing.GroupLayout(jDialogEditCustomer.getContentPane());
+        jDialogEditCustomer.getContentPane().setLayout(jDialogEditCustomerLayout);
+        jDialogEditCustomerLayout.setHorizontalGroup(
+            jDialogEditCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEditCustomerLayout.createSequentialGroup()
+                .addGroup(jDialogEditCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogEditCustomerLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(jDialogEditCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17))
+                        .addGap(36, 36, 36)
+                        .addGroup(jDialogEditCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfEditAdressCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfEditSurnamecustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfEditNameCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jDialogEditCustomerLayout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(btnEditCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+        jDialogEditCustomerLayout.setVerticalGroup(
+            jDialogEditCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogEditCustomerLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jDialogEditCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(tfEditNameCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jDialogEditCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(tfEditSurnamecustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jDialogEditCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(tfEditAdressCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(btnEditCustomer1)
+                .addGap(29, 29, 29))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -290,8 +491,13 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenu2.add(menuItemProduct);
 
-        jMenuItem6.setText("jMenuItem6");
-        jMenu2.add(jMenuItem6);
+        menuItemCustomer.setText("customer");
+        menuItemCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCustomerActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuItemCustomer);
 
         jMenuItem7.setText("jMenuItem7");
         jMenu2.add(jMenuItem7);
@@ -385,24 +591,51 @@ public class MainFrame extends javax.swing.JFrame {
         }
         jTable1.setModel(defModel);
     }
-    
+     private void updateCustomerTable() throws SQLException {
+        customerList = customerController.selectAll();
+        Object[] mas = {"id_customer", "name", "surname", "adress"};
+        DefaultTableModel defModel = new DefaultTableModel(mas, 0);
+        for (int i = 0; i < customerList.size(); i++) {
+             defModel.addRow(customerList.get(i).getString());
+        }
+        jTable1.setModel(defModel);
+    }
     
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-          switch (selectedTable) {
-           case "storage" :
+        switch (selectedTable) {
+            case "storage" :
                Storage s = storageList.get(jTable1.getSelectedRow());
                
-               try {
+                try {
                    storageController.delete(s);
                    updateStorageTable();
-               } catch (SQLException ex) {
+                } catch (SQLException ex) {
                    //Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
                    JOptionPane.showMessageDialog(this, "You can not delete this record - "
                            + "a violation of the integrity of the database");
-               }
-               break;
-               
+                }
+                break;
+            case "product" :
+                Product p = productList.get(jTable1.getSelectedRow());
+                try{
+                    productController.delete(p);
+                    updateProductTable();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "You can not delete this record - "
+                           + "a violation of the integrity of the database");
+                }
+                break;
+            case "customer" :
+                Customer c = customerList.get(jTable1.getSelectedRow());
+                 try{
+                    customerController.delete(c);
+                    updateCustomerTable();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "You can not delete this record - "
+                           + "a violation of the integrity of the database");
+                }
+                break;
             default: 
             JOptionPane.showMessageDialog(this, "You cannot edit this table");
             break;
@@ -414,8 +647,9 @@ public class MainFrame extends javax.swing.JFrame {
             db.createConnection(tfURL.getText(), tfName.getText(), tfPassword.getText());
             storageController = new StorageController(db.getConnection());
             productController = new ProductController(db.getConnection());
+            customerController = new CustomerController(db.getConnection());
             ///
-            ///+5 контроллеров других тут!!
+            ///+4 контроллеров других тут!!
             ///
 
             Label.setText("Connect");
@@ -448,6 +682,9 @@ public class MainFrame extends javax.swing.JFrame {
             case "product" :
                 jDialogAddProduct.setVisible(true);
                 break;
+            case "customer" :
+                jDialogAddCustomer.setVisible(true);
+                break;
             default: 
                 JOptionPane.showMessageDialog(this, "You cannot edit this table");
                 break;
@@ -456,17 +693,22 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         switch (selectedTable) {
-           case "storage" :
-               Storage s = storageList.get(jTable1.getSelectedRow());
-               s.setAdress(JOptionPane.showInputDialog(this, "Print new adress"));
-               try {
-                   storageController.update(s);
-                   updateStorageTable();
-               } catch (SQLException ex) {
-                   Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-               }
-               break;
-               
+            case "storage" :
+                Storage s = storageList.get(jTable1.getSelectedRow());
+                s.setAdress(JOptionPane.showInputDialog(this, "Print new adress"));
+                try {
+                    storageController.update(s);
+                    updateStorageTable();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            case "product" :
+                jDialogEditProduct.setVisible(true);
+                break;
+            case "customer" :
+                jDialogEditCustomer.setVisible(true);
+                break;
             default: 
             JOptionPane.showMessageDialog(this, "You cannot edit this table");
             break;
@@ -481,8 +723,6 @@ public class MainFrame extends javax.swing.JFrame {
             product.setName(tfAddNameProduct.getText());
             product.setId_storage(Integer.parseInt((String) cbAddProductIdStorage.getSelectedItem()));
             productController.add(product);
-            
-            jDialogConnection.setVisible(false);
             updateProductTable();
         } catch (SQLException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -512,6 +752,71 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jDialogAddProductWindowOpened
 
+    private void menuItemCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCustomerActionPerformed
+        if (!db.isFlag_connect()) {
+            JOptionPane.showMessageDialog(this, "Connection error");
+            return;
+        }
+        try {
+            updateCustomerTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+        selectedTable = "customer";
+    }//GEN-LAST:event_menuItemCustomerActionPerformed
+
+    private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
+        try {
+            Customer customer = new Customer();
+            customer.setSurname(tfSurnamecustomer.getText());
+            customer.setAdress(tfAdressCustomer.getText());
+            customer.setName(tfNameCustomer.getText()); 
+            customerController.add(customer);
+            updateCustomerTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jDialogAddCustomer.setVisible(false);
+    }//GEN-LAST:event_btnAddCustomerActionPerformed
+
+    private void btnEditProduct1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditProduct1ActionPerformed
+        try {
+            Product p = productList.get(jTable1.getSelectedRow());
+            p.setCost(Integer.parseInt(tfEditCostProduct1.getText()));
+            p.setCount(Integer.parseInt(tfEditCountProduct1.getText()));
+            p.setName(tfEditNameProduct1.getText());
+            p.setId_storage(Integer.parseInt((String) cbEditProductIdStorage1.getSelectedItem()));
+            productController.update(p);
+            updateProductTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jDialogEditProduct.setVisible(false);
+    }//GEN-LAST:event_btnEditProduct1ActionPerformed
+
+    private void btnEditCustomer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomer1ActionPerformed
+         try {
+            Customer customer = customerList.get(jTable1.getSelectedRow());
+            customer.setSurname(tfEditSurnamecustomer1.getText());
+            customer.setAdress(tfEditAdressCustomer1.getText());
+            customer.setName(tfEditNameCustomer1.getText()); 
+            customerController.update(customer);
+            updateCustomerTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jDialogEditCustomer.setVisible(false);
+    }//GEN-LAST:event_btnEditCustomer1ActionPerformed
+
+    private void jDialogEditProductWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jDialogEditProductWindowOpened
+        try {
+            fillCBProduct();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jDialogEditProductWindowOpened
+
     public void fillCBProduct() throws SQLException {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
        
@@ -521,6 +826,7 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println(mas[i].toString());
         } 
         cbAddProductIdStorage.setModel(model);
+        cbEditProductIdStorage1.setModel(model);
     }
     
     /**
@@ -562,47 +868,74 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton BtnAdd;
     private javax.swing.JButton ConnectionOK;
     private javax.swing.JLabel Label;
+    private javax.swing.JButton btnAddCustomer;
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnEditCustomer1;
+    private javax.swing.JButton btnEditProduct1;
     private javax.swing.JComboBox<String> cbAddProductIdStorage;
-    private javax.swing.JDialog jDialog1;
+    private javax.swing.JComboBox<String> cbEditProductIdStorage1;
+    private javax.swing.JDialog jDialogAddCustomer;
     private javax.swing.JDialog jDialogAddProduct;
     private javax.swing.JDialog jDialogConnection;
+    private javax.swing.JDialog jDialogEditCustomer;
+    private javax.swing.JDialog jDialogEditProduct;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JMenuItem menuItemCustomer;
     private javax.swing.JMenuItem menuItemProduct;
     private javax.swing.JMenuItem menuItemStorage;
     private javax.swing.JTextField tfAddCostProduct;
     private javax.swing.JTextField tfAddCountProduct;
     private javax.swing.JTextField tfAddNameProduct;
+    private javax.swing.JTextField tfAdressCustomer;
+    private javax.swing.JTextField tfEditAdressCustomer1;
+    private javax.swing.JTextField tfEditCostProduct1;
+    private javax.swing.JTextField tfEditCountProduct1;
+    private javax.swing.JTextField tfEditNameCustomer1;
+    private javax.swing.JTextField tfEditNameProduct1;
+    private javax.swing.JTextField tfEditSurnamecustomer1;
     private javax.swing.JTextField tfName;
+    private javax.swing.JTextField tfNameCustomer;
     private javax.swing.JTextField tfPassword;
+    private javax.swing.JTextField tfSurnamecustomer;
     private javax.swing.JTextField tfURL;
     // End of variables declaration//GEN-END:variables
     
     DBManager db = new DBManager();
     StorageController storageController;
     ProductController productController;
+    CustomerController customerController;
     List<Storage> storageList;
     List<Product> productList;
+    List<Customer> customerList;
     String selectedTable;
 }
