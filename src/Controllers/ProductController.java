@@ -6,7 +6,6 @@
 package Controllers;
 
 import Entity.Product;
-import Entity.Storage;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

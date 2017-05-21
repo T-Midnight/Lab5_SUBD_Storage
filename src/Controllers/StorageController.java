@@ -60,7 +60,6 @@ public class StorageController extends AbstractController<Storage> {
     }
     
     //метод выозвращающий список id-шников этого класса. Для внешних ключей, при заполнении comboBox
-    //создаю объект defaultcomboBoxModel, в конструктор буду передавать 
     public Object[] getIds () throws SQLException {
         List<Storage> storage_list = selectAll();
         Object[] result = new Object[storage_list.size()];

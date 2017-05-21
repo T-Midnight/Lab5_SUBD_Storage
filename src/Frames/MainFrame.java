@@ -2,12 +2,13 @@ package Frames;
 
 import Controllers.CustomerController;
 import Controllers.ProductController;
+import Controllers.ProviderController;
 import Controllers.StorageController;
 import DB.DBManager;
 import Entity.Customer;
 import Entity.Product;
+import Entity.Provider;
 import Entity.Storage;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -15,7 +16,6 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -82,6 +82,18 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jDialogAddProvider = new javax.swing.JDialog();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        tfAddProviderName = new javax.swing.JTextField();
+        tfAddProviderAdress = new javax.swing.JTextField();
+        btnAddProvider = new javax.swing.JButton();
+        jDialogEditProvider = new javax.swing.JDialog();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        tfEditProviderName1 = new javax.swing.JTextField();
+        tfEditProviderAdress1 = new javax.swing.JTextField();
+        btnEditProvider1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Label = new javax.swing.JLabel();
@@ -97,7 +109,7 @@ public class MainFrame extends javax.swing.JFrame {
         menuItemStorage = new javax.swing.JMenuItem();
         menuItemProduct = new javax.swing.JMenuItem();
         menuItemCustomer = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        menuItemProvider = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -430,6 +442,103 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
+        jDialogAddProvider.setBounds(new java.awt.Rectangle(0, 0, 300, 200));
+
+        jLabel18.setText("Name of company");
+
+        jLabel19.setText("Adress");
+
+        btnAddProvider.setText("Add");
+        btnAddProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProviderActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogAddProviderLayout = new javax.swing.GroupLayout(jDialogAddProvider.getContentPane());
+        jDialogAddProvider.getContentPane().setLayout(jDialogAddProviderLayout);
+        jDialogAddProviderLayout.setHorizontalGroup(
+            jDialogAddProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAddProviderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogAddProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(jDialogAddProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfAddProviderName, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfAddProviderAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
+            .addGroup(jDialogAddProviderLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(btnAddProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jDialogAddProviderLayout.setVerticalGroup(
+            jDialogAddProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAddProviderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogAddProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(tfAddProviderName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jDialogAddProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(tfAddProviderAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(btnAddProvider)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDialogEditProvider.setBounds(new java.awt.Rectangle(0, 0, 300, 200));
+
+        jLabel20.setText("Name of company");
+
+        jLabel21.setText("Adress");
+
+        btnEditProvider1.setText("Edit");
+        btnEditProvider1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditProvider1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogEditProviderLayout = new javax.swing.GroupLayout(jDialogEditProvider.getContentPane());
+        jDialogEditProvider.getContentPane().setLayout(jDialogEditProviderLayout);
+        jDialogEditProviderLayout.setHorizontalGroup(
+            jDialogEditProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEditProviderLayout.createSequentialGroup()
+                .addGroup(jDialogEditProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogEditProviderLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jDialogEditProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21))
+                        .addGap(60, 60, 60)
+                        .addGroup(jDialogEditProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfEditProviderName1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfEditProviderAdress1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jDialogEditProviderLayout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(btnEditProvider1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jDialogEditProviderLayout.setVerticalGroup(
+            jDialogEditProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEditProviderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogEditProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(tfEditProviderName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jDialogEditProviderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(tfEditProviderAdress1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnEditProvider1)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setViewportView(jTable1);
@@ -499,8 +608,13 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenu2.add(menuItemCustomer);
 
-        jMenuItem7.setText("jMenuItem7");
-        jMenu2.add(jMenuItem7);
+        menuItemProvider.setText("provider");
+        menuItemProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemProviderActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuItemProvider);
 
         jMenuItem8.setText("jMenuItem8");
         jMenu2.add(jMenuItem8);
@@ -591,12 +705,21 @@ public class MainFrame extends javax.swing.JFrame {
         }
         jTable1.setModel(defModel);
     }
-     private void updateCustomerTable() throws SQLException {
+    private void updateCustomerTable() throws SQLException {
         customerList = customerController.selectAll();
         Object[] mas = {"id_customer", "name", "surname", "adress"};
         DefaultTableModel defModel = new DefaultTableModel(mas, 0);
         for (int i = 0; i < customerList.size(); i++) {
              defModel.addRow(customerList.get(i).getString());
+        }
+        jTable1.setModel(defModel);
+    }
+    private void updateProviderTable() throws SQLException {
+        providerList = providerController.selectAll();
+        Object[] mas = {"id_provider", "name of company", "adress"};
+        DefaultTableModel defModel = new DefaultTableModel(mas, 0);
+        for (int i = 0; i < providerList.size(); i++) {
+             defModel.addRow(providerList.get(i).getString());
         }
         jTable1.setModel(defModel);
     }
@@ -636,6 +759,16 @@ public class MainFrame extends javax.swing.JFrame {
                            + "a violation of the integrity of the database");
                 }
                 break;
+            case "provider" :
+                Provider pr = providerList.get(jTable1.getSelectedRow());
+                 try{
+                    providerController.delete(pr);
+                    updateProviderTable();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "You can not delete this record - "
+                           + "a violation of the integrity of the database");
+                }
+                break;
             default: 
             JOptionPane.showMessageDialog(this, "You cannot edit this table");
             break;
@@ -648,8 +781,9 @@ public class MainFrame extends javax.swing.JFrame {
             storageController = new StorageController(db.getConnection());
             productController = new ProductController(db.getConnection());
             customerController = new CustomerController(db.getConnection());
+            providerController = new ProviderController(db.getConnection());
             ///
-            ///+4 контроллеров других тут!!
+            ///+3 контроллера других тут!!
             ///
 
             Label.setText("Connect");
@@ -685,6 +819,9 @@ public class MainFrame extends javax.swing.JFrame {
             case "customer" :
                 jDialogAddCustomer.setVisible(true);
                 break;
+            case "provider" :
+                jDialogAddProvider.setVisible(true);
+                break;
             default: 
                 JOptionPane.showMessageDialog(this, "You cannot edit this table");
                 break;
@@ -708,6 +845,9 @@ public class MainFrame extends javax.swing.JFrame {
                 break;
             case "customer" :
                 jDialogEditCustomer.setVisible(true);
+                break;
+            case "provider" :
+                jDialogEditProvider.setVisible(true);
                 break;
             default: 
             JOptionPane.showMessageDialog(this, "You cannot edit this table");
@@ -817,6 +957,46 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jDialogEditProductWindowOpened
 
+    private void btnAddProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProviderActionPerformed
+        try {
+            Provider provider = new Provider();
+            provider.setNameOfCompany(tfAddProviderName.getText());
+            provider.setAdress(tfAddProviderAdress.getText());
+            providerController.add(provider);
+            updateProviderTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jDialogAddProvider.setVisible(false);
+    }//GEN-LAST:event_btnAddProviderActionPerformed
+
+    private void menuItemProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemProviderActionPerformed
+         if (!db.isFlag_connect()) {
+            JOptionPane.showMessageDialog(this, "Connection error");
+            return;
+        }
+        try {
+            updateProviderTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+        selectedTable = "provider";
+    }//GEN-LAST:event_menuItemProviderActionPerformed
+
+    private void btnEditProvider1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditProvider1ActionPerformed
+        try {
+            Provider provider = providerList.get(jTable1.getSelectedRow());
+            provider.setNameOfCompany(tfEditProviderName1.getText());
+            provider.setAdress(tfEditProviderAdress1.getText());
+            providerController.update(provider);
+            updateProviderTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jDialogEditProvider.setVisible(false);
+    }//GEN-LAST:event_btnEditProvider1ActionPerformed
+
     public void fillCBProduct() throws SQLException {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
        
@@ -870,17 +1050,21 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel Label;
     private javax.swing.JButton btnAddCustomer;
     private javax.swing.JButton btnAddProduct;
+    private javax.swing.JButton btnAddProvider;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditCustomer1;
     private javax.swing.JButton btnEditProduct1;
+    private javax.swing.JButton btnEditProvider1;
     private javax.swing.JComboBox<String> cbAddProductIdStorage;
     private javax.swing.JComboBox<String> cbEditProductIdStorage1;
     private javax.swing.JDialog jDialogAddCustomer;
     private javax.swing.JDialog jDialogAddProduct;
+    private javax.swing.JDialog jDialogAddProvider;
     private javax.swing.JDialog jDialogConnection;
     private javax.swing.JDialog jDialogEditCustomer;
     private javax.swing.JDialog jDialogEditProduct;
+    private javax.swing.JDialog jDialogEditProvider;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -890,7 +1074,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -904,7 +1092,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -912,16 +1099,21 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenuItem menuItemCustomer;
     private javax.swing.JMenuItem menuItemProduct;
+    private javax.swing.JMenuItem menuItemProvider;
     private javax.swing.JMenuItem menuItemStorage;
     private javax.swing.JTextField tfAddCostProduct;
     private javax.swing.JTextField tfAddCountProduct;
     private javax.swing.JTextField tfAddNameProduct;
+    private javax.swing.JTextField tfAddProviderAdress;
+    private javax.swing.JTextField tfAddProviderName;
     private javax.swing.JTextField tfAdressCustomer;
     private javax.swing.JTextField tfEditAdressCustomer1;
     private javax.swing.JTextField tfEditCostProduct1;
     private javax.swing.JTextField tfEditCountProduct1;
     private javax.swing.JTextField tfEditNameCustomer1;
     private javax.swing.JTextField tfEditNameProduct1;
+    private javax.swing.JTextField tfEditProviderAdress1;
+    private javax.swing.JTextField tfEditProviderName1;
     private javax.swing.JTextField tfEditSurnamecustomer1;
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfNameCustomer;
@@ -934,8 +1126,10 @@ public class MainFrame extends javax.swing.JFrame {
     StorageController storageController;
     ProductController productController;
     CustomerController customerController;
+    ProviderController providerController;
     List<Storage> storageList;
     List<Product> productList;
     List<Customer> customerList;
+    List<Provider> providerList;
     String selectedTable;
 }
