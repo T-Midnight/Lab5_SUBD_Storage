@@ -4,14 +4,13 @@ import java.util.List;
 
 public abstract class AbstractController<T> {
 
-	public AbstractController(){}
-	
-	public abstract void add(T entity) throws SQLException;
+    public AbstractController(){}
 
-	public abstract void delete(T entity) throws SQLException;
+    public abstract void add(T entity) throws SQLException;
 
-	public abstract void update(T entity) throws SQLException;
+    public abstract void delete(T entity) throws SQLException;
 
-	public abstract List<T> selectAll() throws SQLException;
-	
+    public abstract void update(T entity) throws SQLException;
+
+    public abstract List<T> selectAll() throws SQLException;
 }

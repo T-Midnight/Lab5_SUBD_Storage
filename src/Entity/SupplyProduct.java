@@ -6,7 +6,6 @@ public class SupplyProduct {
     private int idSupply;
     private int idProduct;
 
-    
      public String[] getString() throws SQLException {
 	return new String[] { getIdSupply() + "", getIdProduct() + ""};
     }

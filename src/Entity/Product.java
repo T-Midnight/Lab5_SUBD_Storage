@@ -1,6 +1,5 @@
 package Entity;
 
-import Controllers.StorageController;
 import java.sql.SQLException;
 
 public class Product {
@@ -9,7 +8,6 @@ public class Product {
     private int cost;
     private int count;
     private int id_storage;
-    StorageController storageController;
     
     public Product() {}
 

@@ -3,6 +3,7 @@ package Frames;
 import Controllers.CustomerController;
 import Controllers.ProductController;
 import Controllers.ProviderController;
+import Controllers.SaleController;
 import Controllers.StorageController;
 import Controllers.SupplyController;
 import Controllers.SupplyProductController;
@@ -10,6 +11,7 @@ import DB.DBManager;
 import Entity.Customer;
 import Entity.Product;
 import Entity.Provider;
+import Entity.Sale;
 import Entity.Storage;
 import Entity.Supply;
 import Entity.SupplyProduct;
@@ -112,6 +114,16 @@ public class MainFrame extends javax.swing.JFrame {
         btnAddSupply = new javax.swing.JButton();
         btnUpdateSupply = new javax.swing.JButton();
         btnDeleteSupply = new javax.swing.JButton();
+        jDialogSale = new javax.swing.JDialog();
+        jLabel26 = new javax.swing.JLabel();
+        cbIdProductSale = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
+        cbIdCustomerSale = new javax.swing.JComboBox<>();
+        jLabel28 = new javax.swing.JLabel();
+        tfCountSale = new javax.swing.JTextField();
+        btnAddSale = new javax.swing.JButton();
+        btnUpdateSale = new javax.swing.JButton();
+        btnDeleteSale = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Label = new javax.swing.JLabel();
@@ -130,12 +142,12 @@ public class MainFrame extends javax.swing.JFrame {
         menuItemProvider = new javax.swing.JMenuItem();
         menuItemSupply = new javax.swing.JMenuItem();
         menuItemSupplyProduct = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        menuItemSale = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuItemAddSupply = new javax.swing.JMenuItem();
         menuItemAddSale = new javax.swing.JMenuItem();
 
-        jDialogConnection.setBounds(new java.awt.Rectangle(0, 0, 500, 300));
+        jDialogConnection.setBounds(new java.awt.Rectangle(0, 0, 400, 300));
 
         jLabel1.setText("jLabel1");
 
@@ -161,44 +173,41 @@ public class MainFrame extends javax.swing.JFrame {
         jDialogConnectionLayout.setHorizontalGroup(
             jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogConnectionLayout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(ConnectionOK, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(377, Short.MAX_VALUE))
-            .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDialogConnectionLayout.createSequentialGroup()
-                    .addGap(79, 79, 79)
-                    .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1))
-                    .addGap(34, 34, 34)
-                    .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(tfPassword)
-                        .addComponent(tfName)
-                        .addComponent(tfURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(280, Short.MAX_VALUE)))
+                .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogConnectionLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(34, 34, 34)
+                        .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfPassword)
+                            .addComponent(tfName)
+                            .addComponent(tfURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jDialogConnectionLayout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(ConnectionOK, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jDialogConnectionLayout.setVerticalGroup(
             jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogConnectionLayout.createSequentialGroup()
-                .addContainerGap(420, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tfURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addComponent(ConnectionOK)
-                .addContainerGap())
-            .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDialogConnectionLayout.createSequentialGroup()
-                    .addGap(61, 61, 61)
-                    .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(tfURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(20, 20, 20)
-                    .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(24, 24, 24)
-                    .addGroup(jDialogConnectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(289, Short.MAX_VALUE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jDialogAddProduct.setBounds(new java.awt.Rectangle(0, 0, 400, 300));
@@ -560,6 +569,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        jDialogSupply.setBounds(new java.awt.Rectangle(0, 0, 300, 250));
         jDialogSupply.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 jDialogSupplyWindowOpened(evt);
@@ -669,6 +679,93 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jDialogSale.setBounds(new java.awt.Rectangle(0, 0, 250, 250));
+        jDialogSale.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                jDialogSaleWindowOpened(evt);
+            }
+        });
+
+        jLabel26.setText("id_product");
+
+        cbIdProductSale.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel27.setText("id_customer");
+
+        cbIdCustomerSale.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel28.setText("count");
+
+        btnAddSale.setText("Add");
+        btnAddSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddSaleActionPerformed(evt);
+            }
+        });
+
+        btnUpdateSale.setText("Update");
+        btnUpdateSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateSaleActionPerformed(evt);
+            }
+        });
+
+        btnDeleteSale.setText("Delete");
+        btnDeleteSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSaleActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogSaleLayout = new javax.swing.GroupLayout(jDialogSale.getContentPane());
+        jDialogSale.getContentPane().setLayout(jDialogSaleLayout);
+        jDialogSaleLayout.setHorizontalGroup(
+            jDialogSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogSaleLayout.createSequentialGroup()
+                .addGroup(jDialogSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogSaleLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jDialogSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel28))
+                        .addGap(36, 36, 36)
+                        .addGroup(jDialogSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbIdCustomerSale, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbIdProductSale, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfCountSale, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jDialogSaleLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAddSale)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdateSale)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeleteSale)))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        jDialogSaleLayout.setVerticalGroup(
+            jDialogSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogSaleLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jDialogSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(tfCountSale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(cbIdProductSale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(cbIdCustomerSale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddSale)
+                    .addComponent(btnUpdateSale)
+                    .addComponent(btnDeleteSale))
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setViewportView(jTable1);
@@ -705,9 +802,19 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Отключиться");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Выход");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         menu.add(jMenu1);
@@ -762,8 +869,13 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenu2.add(menuItemSupplyProduct);
 
-        jMenuItem10.setText("jMenuItem10");
-        jMenu2.add(jMenuItem10);
+        menuItemSale.setText("sale");
+        menuItemSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSaleActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuItemSale);
 
         menu.add(jMenu2);
 
@@ -778,6 +890,11 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu3.add(menuItemAddSupply);
 
         menuItemAddSale.setText("Добавить продажу");
+        menuItemAddSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAddSaleActionPerformed(evt);
+            }
+        });
         jMenu3.add(menuItemAddSale);
 
         menu.add(jMenu3);
@@ -896,6 +1013,15 @@ public class MainFrame extends javax.swing.JFrame {
         }
         jTable1.setModel(defModel);
     }
+    private void updateSaleTable() throws SQLException {
+        saleList = saleController.selectAll();
+        Object[] mas = {"id_sale", "count", "id_product", "id_customer"};
+        DefaultTableModel defModel = new DefaultTableModel(mas, 0);
+        for (int i = 0; i < saleList.size(); i++) {
+             defModel.addRow(saleList.get(i).getString());
+        }
+        jTable1.setModel(defModel);
+    }
     
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -957,9 +1083,7 @@ public class MainFrame extends javax.swing.JFrame {
             providerController = new ProviderController(db.getConnection());
             supplyController = new SupplyController(db.getConnection());
             supplyProductController = new SupplyProductController(db.getConnection());
-            ///
-            ///+1 контроллер другой тут!!
-            ///
+            saleController = new SaleController(db.getConnection());
 
             Label.setText("Connect");
             
@@ -971,7 +1095,6 @@ public class MainFrame extends javax.swing.JFrame {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         jDialogConnection.setVisible(false);
-        //dispose();
     }//GEN-LAST:event_ConnectionOKActionPerformed
 
     private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
@@ -1186,7 +1309,12 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemSupplyActionPerformed
 
     private void menuItemAddSupplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddSupplyActionPerformed
-        jDialogSupply.setVisible(true);
+        if (!db.isFlag_connect()) {
+            JOptionPane.showMessageDialog(this, "Connection error");
+            return;
+        } else {
+            jDialogSupply.setVisible(true);
+        }
     }//GEN-LAST:event_menuItemAddSupplyActionPerformed
 
     private void btnAddSupplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplyActionPerformed
@@ -1266,6 +1394,90 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteSupplyActionPerformed
 
+    private void menuItemAddSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddSaleActionPerformed
+         if (!db.isFlag_connect()) {
+            JOptionPane.showMessageDialog(this, "Connection error");
+            return;
+        } else {
+             jDialogSale.setVisible(true);
+        }
+    }//GEN-LAST:event_menuItemAddSaleActionPerformed
+
+    private void menuItemSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSaleActionPerformed
+        if (!db.isFlag_connect()) {
+            JOptionPane.showMessageDialog(this, "Connection error");
+            return;
+        }
+        try {
+            updateSaleTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_menuItemSaleActionPerformed
+
+    private void btnAddSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSaleActionPerformed
+        try {
+            Sale sale = new Sale();
+            sale.setCount(Integer.parseInt(tfCountSale.getText()));
+            sale.setIdProduct(Integer.parseInt((String) cbIdProductSale.getSelectedItem()));
+            sale.setIdCustomer(Integer.parseInt((String) cbIdCustomerSale.getSelectedItem()));
+            saleController.add(sale);
+            updateSaleTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAddSaleActionPerformed
+
+    private void jDialogSaleWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jDialogSaleWindowOpened
+        try {
+            fillCBProductinSale();
+            fillCBcustomerinSale();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jDialogSaleWindowOpened
+
+    private void btnUpdateSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateSaleActionPerformed
+        try {
+            Sale sale = saleList.get(jTable1.getSelectedRow());
+            sale.setCount(Integer.parseInt(tfCountSale.getText()));
+            sale.setIdProduct(Integer.parseInt((String) cbIdProductSale.getSelectedItem()));
+            sale.setIdCustomer(Integer.parseInt((String) cbIdCustomerSale.getSelectedItem()));
+            saleController.update(sale);
+            updateSaleTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnUpdateSaleActionPerformed
+
+    private void btnDeleteSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSaleActionPerformed
+        try{
+            Sale s = saleList.get(jTable1.getSelectedRow());
+            saleController.delete(s);
+            updateSaleTable();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "You can not delete this record - "
+                   + "a violation of the integrity of the database");
+        }
+    }//GEN-LAST:event_btnDeleteSaleActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        if(db.getConnection() != null) {
+            try {
+                db.closeConnection();
+                Label.setText("Disconnect");
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     public void fillCBProduct() throws SQLException {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
        
@@ -1296,6 +1508,26 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println(mas[i].toString());
         } 
         cbIdProduct.setModel(model);
+    }
+    public void fillCBProductinSale() throws SQLException {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+       
+        Object[] mas = productController.getIds();
+        for (int i = 0; i < mas.length; i++) {
+            model.addElement(mas[i].toString());
+            System.out.println(mas[i].toString());
+        } 
+        cbIdProductSale.setModel(model);
+    }
+    public void fillCBcustomerinSale() throws SQLException {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+       
+        Object[] mas = customerController.getIds();
+        for (int i = 0; i < mas.length; i++) {
+            model.addElement(mas[i].toString());
+            System.out.println(mas[i].toString());
+        } 
+        cbIdCustomerSale.setModel(model);
     }
     
     /**
@@ -1340,17 +1572,22 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAddCustomer;
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnAddProvider;
+    private javax.swing.JButton btnAddSale;
     private javax.swing.JButton btnAddSupply;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDeleteSale;
     private javax.swing.JButton btnDeleteSupply;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditCustomer1;
     private javax.swing.JButton btnEditProduct1;
     private javax.swing.JButton btnEditProvider1;
+    private javax.swing.JButton btnUpdateSale;
     private javax.swing.JButton btnUpdateSupply;
     private javax.swing.JComboBox<String> cbAddProductIdStorage;
     private javax.swing.JComboBox<String> cbEditProductIdStorage1;
+    private javax.swing.JComboBox<String> cbIdCustomerSale;
     private javax.swing.JComboBox<String> cbIdProduct;
+    private javax.swing.JComboBox<String> cbIdProductSale;
     private javax.swing.JComboBox<String> cbIdProviderSupply;
     private javax.swing.JDialog jDialogAddCustomer;
     private javax.swing.JDialog jDialogAddProduct;
@@ -1359,6 +1596,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JDialog jDialogEditCustomer;
     private javax.swing.JDialog jDialogEditProduct;
     private javax.swing.JDialog jDialogEditProvider;
+    private javax.swing.JDialog jDialogSale;
     private javax.swing.JDialog jDialogSupply;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1378,6 +1616,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1389,7 +1630,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1401,6 +1641,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemCustomer;
     private javax.swing.JMenuItem menuItemProduct;
     private javax.swing.JMenuItem menuItemProvider;
+    private javax.swing.JMenuItem menuItemSale;
     private javax.swing.JMenuItem menuItemStorage;
     private javax.swing.JMenuItem menuItemSupply;
     private javax.swing.JMenuItem menuItemSupplyProduct;
@@ -1410,6 +1651,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tfAddProviderAdress;
     private javax.swing.JTextField tfAddProviderName;
     private javax.swing.JTextField tfAdressCustomer;
+    private javax.swing.JTextField tfCountSale;
     private javax.swing.JTextField tfCountSupply;
     private javax.swing.JTextField tfDateSupply;
     private javax.swing.JTextField tfEditAdressCustomer1;
@@ -1427,18 +1669,20 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tfURL;
     // End of variables declaration//GEN-END:variables
     
-    DBManager db = new DBManager();
-    StorageController storageController;
-    ProductController productController;
-    CustomerController customerController;
-    ProviderController providerController;
-    SupplyController supplyController;
-    SupplyProductController supplyProductController;
-    List<Storage> storageList;
-    List<Product> productList;
-    List<Customer> customerList;
-    List<Provider> providerList;
-    List<Supply> supplyList;
-    List<SupplyProduct> supplyProductList;
-    String selectedTable;
+    private DBManager db = new DBManager();
+    private StorageController storageController;
+    private ProductController productController;
+    private CustomerController customerController;
+    private ProviderController providerController;
+    private SupplyController supplyController;
+    private SupplyProductController supplyProductController;
+    private SaleController saleController;
+    private List<Storage> storageList;
+    private List<Product> productList;
+    private List<Customer> customerList;
+    private List<Provider> providerList;
+    private List<Supply> supplyList;
+    private List<SupplyProduct> supplyProductList;
+    private List<Sale> saleList;
+    private String selectedTable;
 }

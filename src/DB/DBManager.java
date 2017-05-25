@@ -7,11 +7,8 @@ package DB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-
 
 /**
  *
@@ -40,5 +37,10 @@ public class DBManager {
      */
     public boolean isFlag_connect() {
         return flag_connect;
+    }
+
+    public void closeConnection() throws SQLException{
+        connection.close();
+        flag_connect = false;
     }
 }

@@ -18,8 +18,8 @@ import java.util.List;
  * @author User
  */
 public class SupplyProductController extends AbstractController<SupplyProduct>{
-    Connection connection;
-    Statement statement;
+    private Connection connection;
+    private Statement statement;
     public SupplyProductController(Connection connection) {
         this.connection = connection;
     }

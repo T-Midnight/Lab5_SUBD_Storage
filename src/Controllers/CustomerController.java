@@ -6,6 +6,7 @@
 package Controllers;
 
 import Entity.Customer;
+import Entity.Product;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,8 +20,8 @@ import java.util.List;
  */
 public class CustomerController extends AbstractController<Customer>{
 
-    Connection connection;
-    Statement statement;
+    private Connection connection;
+    private Statement statement;
     public CustomerController(Connection connection) {
         this.connection = connection;
     }
@@ -80,7 +81,7 @@ public class CustomerController extends AbstractController<Customer>{
     //метод возвращающий список id-шников этого класса. Для внешних ключей, при заполнении comboBox
     public Object[] getIds () throws SQLException {
         List<Customer> customer_list = selectAll();
-        Object[] result = new Customer[customer_list.size()];
+        Object[] result = new Object[customer_list.size()];
         for(int i = 0; i < customer_list.size(); i++) {
             result[i] = customer_list.get(i).getIdCustomer();
         }

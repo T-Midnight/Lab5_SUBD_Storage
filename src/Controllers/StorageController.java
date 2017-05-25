@@ -10,9 +10,8 @@ import java.util.List;
 
 
 public class StorageController extends AbstractController<Storage> {
-
-    Connection connection;
-    Statement statement;
+    private Connection connection;
+    private Statement statement;
     public StorageController(Connection connection) {
         this.connection = connection;
     }

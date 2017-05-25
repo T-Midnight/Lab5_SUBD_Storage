@@ -19,8 +19,8 @@ import java.util.List;
  */
 public class ProviderController extends AbstractController<Provider>{
 
-    Connection connection;
-    Statement statement;
+    private Connection connection;
+    private Statement statement;
     public ProviderController(Connection connection) {
         this.connection = connection;
     }
