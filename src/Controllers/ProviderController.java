@@ -28,8 +28,9 @@ public class ProviderController extends AbstractController<Provider>{
     public void add(Provider entity) throws SQLException {
         statement = connection.createStatement();
         String query = "insert into provider values" 
-            + "(nextval('seq_id_provider'),'" + entity.getNameOfCompany()+ "',"
-            + "'" + entity.getAdress() + "');";
+                    + "(nextval('seq_id_provider'),'" 
+                    + entity.getNameOfCompany()+ "',"
+                    + "'" + entity.getAdress() + "');";
         System.out.println(query);
         statement.execute(query);
     }
@@ -37,7 +38,8 @@ public class ProviderController extends AbstractController<Provider>{
     @Override
     public void delete(Provider entity) throws SQLException {
         statement = connection.createStatement();
-        String query = "delete from provider where id_provider = " + entity.getIdProvider();
+        String query = "delete from provider where id_provider = " 
+                    + entity.getIdProvider();
         System.out.println(query);
         statement.executeUpdate(query);
     }
@@ -75,7 +77,7 @@ public class ProviderController extends AbstractController<Provider>{
         return statement.executeQuery("select * from provider"); 
     }
     
-     public Object[] getIds () throws SQLException {
+    public Object[] getIds () throws SQLException {
         List<Provider> provider_list = selectAll();
         Object[] result = new Object[provider_list.size()];
         for(int i = 0; i < provider_list.size(); i++) {

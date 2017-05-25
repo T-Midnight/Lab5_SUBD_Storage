@@ -4,11 +4,16 @@ import Controllers.CustomerController;
 import Controllers.ProductController;
 import Controllers.ProviderController;
 import Controllers.StorageController;
+import Controllers.SupplyController;
+import Controllers.SupplyProductController;
 import DB.DBManager;
 import Entity.Customer;
 import Entity.Product;
 import Entity.Provider;
 import Entity.Storage;
+import Entity.Supply;
+import Entity.SupplyProduct;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -94,6 +99,19 @@ public class MainFrame extends javax.swing.JFrame {
         tfEditProviderName1 = new javax.swing.JTextField();
         tfEditProviderAdress1 = new javax.swing.JTextField();
         btnEditProvider1 = new javax.swing.JButton();
+        jDialogSupply = new javax.swing.JDialog();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        cbIdProviderSupply = new javax.swing.JComboBox<>();
+        tfCountSupply = new javax.swing.JTextField();
+        tfDateSupply = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        cbIdProduct = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnAddSupply = new javax.swing.JButton();
+        btnUpdateSupply = new javax.swing.JButton();
+        btnDeleteSupply = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Label = new javax.swing.JLabel();
@@ -110,9 +128,12 @@ public class MainFrame extends javax.swing.JFrame {
         menuItemProduct = new javax.swing.JMenuItem();
         menuItemCustomer = new javax.swing.JMenuItem();
         menuItemProvider = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        menuItemSupply = new javax.swing.JMenuItem();
+        menuItemSupplyProduct = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        menuItemAddSupply = new javax.swing.JMenuItem();
+        menuItemAddSale = new javax.swing.JMenuItem();
 
         jDialogConnection.setBounds(new java.awt.Rectangle(0, 0, 500, 300));
 
@@ -539,6 +560,115 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        jDialogSupply.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                jDialogSupplyWindowOpened(evt);
+            }
+        });
+
+        jLabel22.setText("Count");
+
+        jLabel23.setText("SupplyDate");
+
+        jLabel24.setText("IdProvider");
+
+        cbIdProviderSupply.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel25.setText("idProduct");
+
+        cbIdProduct.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnAddSupply.setText("Add");
+        btnAddSupply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddSupplyActionPerformed(evt);
+            }
+        });
+
+        btnUpdateSupply.setText("Update");
+        btnUpdateSupply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateSupplyActionPerformed(evt);
+            }
+        });
+
+        btnDeleteSupply.setText("Delete");
+        btnDeleteSupply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSupplyActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogSupplyLayout = new javax.swing.GroupLayout(jDialogSupply.getContentPane());
+        jDialogSupply.getContentPane().setLayout(jDialogSupplyLayout);
+        jDialogSupplyLayout.setHorizontalGroup(
+            jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogSupplyLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel23)
+                    .addGroup(jDialogSupplyLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel22)))
+                .addGap(34, 34, 34)
+                .addGroup(jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfCountSupply, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbIdProviderSupply, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDateSupply, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogSupplyLayout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addGap(69, 69, 69))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogSupplyLayout.createSequentialGroup()
+                        .addComponent(cbIdProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))))
+            .addGroup(jDialogSupplyLayout.createSequentialGroup()
+                .addGroup(jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogSupplyLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialogSupplyLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(btnAddSupply)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdateSupply)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeleteSupply)))
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        jDialogSupplyLayout.setVerticalGroup(
+            jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogSupplyLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(tfCountSupply, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addGroup(jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogSupplyLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(tfDateSupply, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(cbIdProviderSupply, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jDialogSupplyLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbIdProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogSupplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddSupply)
+                    .addComponent(btnUpdateSupply)
+                    .addComponent(btnDeleteSupply))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setViewportView(jTable1);
@@ -616,16 +746,41 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenu2.add(menuItemProvider);
 
-        jMenuItem8.setText("jMenuItem8");
-        jMenu2.add(jMenuItem8);
+        menuItemSupply.setText("supply");
+        menuItemSupply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSupplyActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuItemSupply);
 
-        jMenuItem9.setText("jMenuItem9");
-        jMenu2.add(jMenuItem9);
+        menuItemSupplyProduct.setText("supply_product");
+        menuItemSupplyProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSupplyProductActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuItemSupplyProduct);
 
         jMenuItem10.setText("jMenuItem10");
         jMenu2.add(jMenuItem10);
 
         menu.add(jMenu2);
+
+        jMenu3.setText("Действия");
+
+        menuItemAddSupply.setText("Добавить поставку");
+        menuItemAddSupply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAddSupplyActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemAddSupply);
+
+        menuItemAddSale.setText("Добавить продажу");
+        jMenu3.add(menuItemAddSale);
+
+        menu.add(jMenu3);
 
         setJMenuBar(menu);
 
@@ -723,6 +878,24 @@ public class MainFrame extends javax.swing.JFrame {
         }
         jTable1.setModel(defModel);
     }
+    private void updateSupplyTable() throws SQLException {
+        supplyList = supplyController.selectAll();
+        Object[] mas = {"id_supply", "count", "supply_date", "id_provider"};
+        DefaultTableModel defModel = new DefaultTableModel(mas, 0);
+        for (int i = 0; i < supplyList.size(); i++) {
+             defModel.addRow(supplyList.get(i).getString());
+        }
+        jTable1.setModel(defModel);
+    }
+    private void updateSupplyProductTable() throws SQLException {
+        supplyProductList = supplyProductController.selectAll();
+        Object[] mas = {"id_supply", "id_product"};
+        DefaultTableModel defModel = new DefaultTableModel(mas, 0);
+        for (int i = 0; i < supplyProductList.size(); i++) {
+             defModel.addRow(supplyProductList.get(i).getString());
+        }
+        jTable1.setModel(defModel);
+    }
     
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -782,8 +955,10 @@ public class MainFrame extends javax.swing.JFrame {
             productController = new ProductController(db.getConnection());
             customerController = new CustomerController(db.getConnection());
             providerController = new ProviderController(db.getConnection());
+            supplyController = new SupplyController(db.getConnection());
+            supplyProductController = new SupplyProductController(db.getConnection());
             ///
-            ///+3 контроллера других тут!!
+            ///+1 контроллер другой тут!!
             ///
 
             Label.setText("Connect");
@@ -792,9 +967,8 @@ public class MainFrame extends javax.swing.JFrame {
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
             ex.printStackTrace();
-        }
-        catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConnectionFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         jDialogConnection.setVisible(false);
         //dispose();
@@ -971,7 +1145,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddProviderActionPerformed
 
     private void menuItemProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemProviderActionPerformed
-         if (!db.isFlag_connect()) {
+        if (!db.isFlag_connect()) {
             JOptionPane.showMessageDialog(this, "Connection error");
             return;
         }
@@ -997,6 +1171,101 @@ public class MainFrame extends javax.swing.JFrame {
         jDialogEditProvider.setVisible(false);
     }//GEN-LAST:event_btnEditProvider1ActionPerformed
 
+    private void menuItemSupplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSupplyActionPerformed
+        if (!db.isFlag_connect()) {
+            JOptionPane.showMessageDialog(this, "Connection error");
+            return;
+        }
+        try {
+            updateSupplyTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+        selectedTable = "supply";
+    }//GEN-LAST:event_menuItemSupplyActionPerformed
+
+    private void menuItemAddSupplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddSupplyActionPerformed
+        jDialogSupply.setVisible(true);
+    }//GEN-LAST:event_menuItemAddSupplyActionPerformed
+
+    private void btnAddSupplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplyActionPerformed
+        try {
+            Supply supply = new Supply();
+            supply.setCount(Integer.parseInt(tfCountSupply.getText()));
+            supply.setSupplyDate(Date.valueOf(tfDateSupply.getText()));
+            supply.setIdProvider(Integer.parseInt((String) cbIdProviderSupply.getSelectedItem()));
+            supplyController.add(supply);
+            updateSupplyTable();
+            
+            SupplyProduct suppyProduct = new SupplyProduct();
+            suppyProduct.setIdSupply(supplyController.getLastIdSupply());
+            suppyProduct.setIdProduct(Integer.parseInt((String) cbIdProduct.getSelectedItem()));
+            supplyProductController.add(suppyProduct);
+            updateSupplyProductTable();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAddSupplyActionPerformed
+
+    private void jDialogSupplyWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jDialogSupplyWindowOpened
+        try {
+            fillCBProviderSupply();
+            fillCBProductinSupply();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jDialogSupplyWindowOpened
+
+    private void menuItemSupplyProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSupplyProductActionPerformed
+        if (!db.isFlag_connect()) {
+            JOptionPane.showMessageDialog(this, "Connection error");
+            return;
+        }
+        try {
+            updateSupplyProductTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+        selectedTable = "supplyProduct";
+    }//GEN-LAST:event_menuItemSupplyProductActionPerformed
+
+    private void btnUpdateSupplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateSupplyActionPerformed
+        try {
+            Supply supply = supplyList.get(jTable1.getSelectedRow());
+            supply.setCount(Integer.parseInt(tfCountSupply.getText()));
+            supply.setSupplyDate(Date.valueOf(tfDateSupply.getText()));
+            supply.setIdProvider(Integer.parseInt((String) cbIdProviderSupply.getSelectedItem()));
+            supplyController.update(supply);
+            updateSupplyTable();
+            
+            SupplyProduct suppyProduct = supplyProductController.selectByIndex(jTable1.getSelectedRow());
+            suppyProduct.setIdSupply(supply.getIdSupply());
+            suppyProduct.setIdProduct(Integer.parseInt((String) cbIdProduct.getSelectedItem()));
+            supplyProductController.update(suppyProduct);
+            updateSupplyProductTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnUpdateSupplyActionPerformed
+
+    private void btnDeleteSupplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSupplyActionPerformed
+        try{
+            Supply s = supplyList.get(jTable1.getSelectedRow());
+            SupplyProduct suppyProduct = supplyProductController.selectByIndex(s.getIdSupply());
+            
+            supplyProductController.delete(suppyProduct);
+            supplyController.delete(s);
+            updateSupplyTable();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "You can not delete this record - "
+                   + "a violation of the integrity of the database");
+        }
+    }//GEN-LAST:event_btnDeleteSupplyActionPerformed
+
     public void fillCBProduct() throws SQLException {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
        
@@ -1007,6 +1276,26 @@ public class MainFrame extends javax.swing.JFrame {
         } 
         cbAddProductIdStorage.setModel(model);
         cbEditProductIdStorage1.setModel(model);
+    }
+    public void fillCBProviderSupply() throws SQLException {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+       
+        Object[] mas = providerController.getIds();
+        for (int i = 0; i < mas.length; i++) {
+            model.addElement(mas[i].toString());
+            System.out.println(mas[i].toString());
+        } 
+        cbIdProviderSupply.setModel(model);
+    }
+    public void fillCBProductinSupply() throws SQLException {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+       
+        Object[] mas = productController.getIds();
+        for (int i = 0; i < mas.length; i++) {
+            model.addElement(mas[i].toString());
+            System.out.println(mas[i].toString());
+        } 
+        cbIdProduct.setModel(model);
     }
     
     /**
@@ -1051,13 +1340,18 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAddCustomer;
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnAddProvider;
+    private javax.swing.JButton btnAddSupply;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDeleteSupply;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditCustomer1;
     private javax.swing.JButton btnEditProduct1;
     private javax.swing.JButton btnEditProvider1;
+    private javax.swing.JButton btnUpdateSupply;
     private javax.swing.JComboBox<String> cbAddProductIdStorage;
     private javax.swing.JComboBox<String> cbEditProductIdStorage1;
+    private javax.swing.JComboBox<String> cbIdProduct;
+    private javax.swing.JComboBox<String> cbIdProviderSupply;
     private javax.swing.JDialog jDialogAddCustomer;
     private javax.swing.JDialog jDialogAddProduct;
     private javax.swing.JDialog jDialogAddProvider;
@@ -1065,6 +1359,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JDialog jDialogEditCustomer;
     private javax.swing.JDialog jDialogEditProduct;
     private javax.swing.JDialog jDialogEditProvider;
+    private javax.swing.JDialog jDialogSupply;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1079,6 +1374,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1088,25 +1387,31 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JMenuItem menuItemAddSale;
+    private javax.swing.JMenuItem menuItemAddSupply;
     private javax.swing.JMenuItem menuItemCustomer;
     private javax.swing.JMenuItem menuItemProduct;
     private javax.swing.JMenuItem menuItemProvider;
     private javax.swing.JMenuItem menuItemStorage;
+    private javax.swing.JMenuItem menuItemSupply;
+    private javax.swing.JMenuItem menuItemSupplyProduct;
     private javax.swing.JTextField tfAddCostProduct;
     private javax.swing.JTextField tfAddCountProduct;
     private javax.swing.JTextField tfAddNameProduct;
     private javax.swing.JTextField tfAddProviderAdress;
     private javax.swing.JTextField tfAddProviderName;
     private javax.swing.JTextField tfAdressCustomer;
+    private javax.swing.JTextField tfCountSupply;
+    private javax.swing.JTextField tfDateSupply;
     private javax.swing.JTextField tfEditAdressCustomer1;
     private javax.swing.JTextField tfEditCostProduct1;
     private javax.swing.JTextField tfEditCountProduct1;
@@ -1127,9 +1432,13 @@ public class MainFrame extends javax.swing.JFrame {
     ProductController productController;
     CustomerController customerController;
     ProviderController providerController;
+    SupplyController supplyController;
+    SupplyProductController supplyProductController;
     List<Storage> storageList;
     List<Product> productList;
     List<Customer> customerList;
     List<Provider> providerList;
+    List<Supply> supplyList;
+    List<SupplyProduct> supplyProductList;
     String selectedTable;
 }

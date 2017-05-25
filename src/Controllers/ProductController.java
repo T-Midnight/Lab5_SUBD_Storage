@@ -73,11 +73,11 @@ public class ProductController extends AbstractController<Product>{
     }
     
     //метод возвращающий список id-шников этого класса. Для внешних ключей, при заполнении comboBox
-    public Product[] getIds () throws SQLException {
+    public Object[] getIds () throws SQLException {
         List<Product> product_list = selectAll();
-        Product[] result = new Product[product_list.size()];
+        Object[] result = new Object[product_list.size()];
         for(int i = 0; i < product_list.size(); i++) {
-           // result[i] = product_list.get(i).getId_product();
+            result[i] = product_list.get(i).getId_product();
         }
         return result;
     }
